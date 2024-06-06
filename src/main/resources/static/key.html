@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>키 생성</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h1> 🔐 키 생성 하기  🔐</h1>
+<h3>키 파일은 입력값_public.key, 입력값_private.key로 저장됩니다.</h3>
+<form action="/keys" method="post">
+    <label for="keyName">키 파일 이름 작성:</label>
+    <input type="text" id="keyName" name="keyName" required><br><br>
+    <button type="submit">키 생성하기</button>
+</form>
+<a href="index.html">메인 페이지로 이동</a>
+</body>
+</html>

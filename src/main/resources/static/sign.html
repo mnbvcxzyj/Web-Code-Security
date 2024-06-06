@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>전자 서명 프로젝트 - 계약서</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h1>아이돌 전자 계약서</h1>
+
+<form action="/sign" method="post">
+  <label>이름:</label>
+  <label for="name"></label><input type="text" id="name" required><br><br>
+
+  <label for="address">주소 :</label><br>
+  <input type="text" id="address" required><br><br>
+
+  <label>내용 :</label>
+  <label>
+    <textarea name="content" required></textarea>
+  </label><br>
+
+  <label>계약 시작 :</label>
+  <label>
+    <input type="date" name="startDate" required>
+  </label><br>
+
+  <label>계약 종료 :</label>
+  <label>
+    <input type="date" name="endDate" required>
+  </label><br><br><br><br><br>
+
+  <button type="submit">계약서 전송</button>
+</form>
+</body>
+</html>
