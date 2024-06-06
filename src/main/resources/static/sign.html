@@ -11,25 +11,30 @@
 
 <form action="/sign" method="post">
   <label>이름:</label>
-  <label for="name"></label><input type="text" id="name" required><br><br>
+  <input type="text" id="name" name="name" required><br><br>
 
   <label for="address">주소 :</label><br>
-  <input type="text" id="address" required><br><br>
+  <input type="text" id="address" name="address" required><br><br>
+
+  <label for="publicKeyFile">public key 파일 이름 :</label><br>
+  <input type="text" id="publicKeyFile" name="publicKeyFile" required><br><br>
+
+  <label for="privateKeyFile">private key 파일 이름 :</label><br>
+  <input type="text" id="privateKeyFile" name="privateKeyFile" required><br><br>
 
   <label>내용 :</label>
   <label>
-    <textarea name="content" required></textarea>
+    <textarea name="document" required></textarea>
   </label><br>
 
   <label>계약 시작 :</label>
-  <label>
-    <input type="date" name="startDate" required>
-  </label><br>
+  <input type="date" name="startDate" required><br><br>
 
   <label>계약 종료 :</label>
-  <label>
-    <input type="date" name="endDate" required>
-  </label><br><br><br><br><br>
+  <input type="date" name="endDate" required><br><br>
+
+  <label for="signFile">전자 서명을 저장할 파일 이름 (입력값_envelope.dat 으로 저장됩니다.) :</label><br>
+  <input type="text" id="signFile" name="signFile" required><br><br>
 
   <button type="submit">계약서 전송</button>
 </form>

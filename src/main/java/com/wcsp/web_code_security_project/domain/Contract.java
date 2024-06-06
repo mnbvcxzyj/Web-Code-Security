@@ -12,7 +12,11 @@ import java.time.LocalDate;
 public class Contract {
     private String name;
     private String address;
+    private String publicKeyFile;
+    private String privateKeyFile;
+    private String document;
     private LocalDate startDate;
     private LocalDate endDate;
-    private String status;
+    private String signFile;
+
 }

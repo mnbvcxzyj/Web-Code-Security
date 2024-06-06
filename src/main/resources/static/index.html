@@ -8,6 +8,9 @@
 </head>
 <body>
 <h1>아이돌 계약서 전자 서명 시스템 입니다.</h1>
+<div th:if="${message}" th:text="${message}" style="color: green;"></div>
+<div th:if="${error}" th:text="${error}" style="color: red;"></div>
+
 <nav>
   <ul>
     <li><a href="key.html">1. 키 생성하기</a></li>

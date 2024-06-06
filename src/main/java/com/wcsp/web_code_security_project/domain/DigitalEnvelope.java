@@ -4,12 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.security.PublicKey;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class DigitalEnvelope {
+public class DigitalEnvelope implements Serializable {
     private String data;
     private byte[] signature;
     private PublicKey publicKey;

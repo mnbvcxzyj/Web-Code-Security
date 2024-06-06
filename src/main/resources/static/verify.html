@@ -9,13 +9,17 @@
 <body>
 <h2>계약서 검증</h2>
 <form action="/verify" method="post">
-  <label for="envelopeText">기존 작성한 계약서 내용 : </label><br>
+  <label for="envelopeText">기존 계약서 파일 : </label><br>
   <textarea id="envelopeText" rows="10" cols="50" required></textarea><br>
 
-  <label for="signatureText">전자서명? </label><br>
-  <textarea id="signatureText" rows="5" cols="50" required></textarea><br>
-  <button type="submit">Verify Document</button>
+  <label for="keyName">키 파일 이름 :</label>
+  <input type="text" id="keyName" name="keyName" required><br>
+
+
+  <button type="submit">검증하기 !!!! </button>
 </form>
+
+<a href="index.html">메인으로 이동</a>
 <p id="verifyResult"></p>
 </body>
 </html>
