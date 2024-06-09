@@ -5,15 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>키 생성</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<h1> 🔐 키 생성 하기  🔐</h1>
+<h1>🔐 키 생성 하기 🔐</h1>
 <h3>키 파일은 입력값_public.key, 입력값_private.key로 저장됩니다.</h3>
-<form action="/keys" method="post">
+<form id="keyForm">
     <label for="keyName">키 파일 이름 작성:</label>
     <input type="text" id="keyName" name="keyName" required><br><br>
     <button type="submit">키 생성하기</button>
 </form>
+<p id="signResult"></p>
 <a href="index.html">메인 페이지로 이동</a>
+<script>
+    $(document).ready(function(){
+        $('#keyForm').on('submit', function(event) {
+            event.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '/keys',
+                data: $(this).serialize(),
+                success: function(response) {
+                    $('#signResult').text(response);
+                },
+                error: function(error) {
+                    $('#signResult').text('키 생성 중 오류가 발생했습니다.');
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>

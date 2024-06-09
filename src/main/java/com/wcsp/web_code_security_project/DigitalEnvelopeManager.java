@@ -1,5 +1,6 @@
 package com.wcsp.web_code_security_project;
 
+import com.wcsp.web_code_security_project.domain.Contract;
 import com.wcsp.web_code_security_project.domain.DigitalEnvelope;
 
 import java.io.*;
@@ -7,19 +8,32 @@ import java.security.*;
 import java.util.Arrays;
 
 public class DigitalEnvelopeManager {
-    private static final String ASYMMETRIC_ALGORITHM = "RSA";
     private static final String SIGN_ALGORITHM = "SHA256withRSA";
-    private static final String HASH_ALGORITHM = "MD5";
 
-    // 해시값 생성
-    public byte[] createHash(String data) throws NoSuchAlgorithmException {
-        MessageDigest md = MessageDigest.getInstance(HASH_ALGORITHM);
-        md.update(data.getBytes());
-        byte[] hashData = md.digest();
 
-        return hashData;
+    // 원본 파일 저장
+    public void saveOriginFile(String contract, String fileName){
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+            writer.write(contract);
+        } catch (IOException e) {
+            throw new RuntimeException("원본 파일 저장 에러 : " + e.getMessage(), e);
+        }
     }
 
+    // 원본 파일 읽어 오기
+    // 원본 파일 읽어오기
+    public String readOriginFile(String fileName) {
+        StringBuilder sb = new StringBuilder();
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                sb.append(line).append("\n");
+            }
+        } catch (IOException e) {
+            throw new RuntimeException("데이터 파일 읽기 실패: " + e.getMessage(), e);
+        }
+        return sb.toString().trim();
+    }
 
     // 전자봉투 생성
     // - 전자서명 생성 -> 원문 +  publickey를 private키로 암호화 -> 영희의 public key로 암호화
@@ -38,6 +52,7 @@ public class DigitalEnvelopeManager {
 
         // 전자 서명 생성
         byte[] signature = sig.sign();
+
         return new DigitalEnvelope(data, signature, publicKey);
     }
 
@@ -64,7 +79,7 @@ public class DigitalEnvelopeManager {
     // 영희의 사설키로 복호화해서 철수의 공개키 가져오기
     // 비밀키로 전자서명과 평문, 인증서(?) 복호화
     // 공개키를 가져와서 복호화 하고 원문과 비교
-    public boolean verifySignature(String document, byte[] signature, PublicKey publicKey) throws GeneralSecurityException {
+    public boolean verifySignature(String data, byte[] signature, PublicKey publicKey) throws GeneralSecurityException {
         // 객체 생성
         Signature sig = Signature.getInstance(SIGN_ALGORITHM);
 
@@ -72,7 +87,7 @@ public class DigitalEnvelopeManager {
         sig.initVerify(publicKey);
 
         // 검증 데이터
-        sig.update(document.getBytes());
+        sig.update(data.getBytes());
 
         // 서명 검증
         return sig.verify(signature);

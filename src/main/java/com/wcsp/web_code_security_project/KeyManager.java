@@ -90,4 +90,14 @@ public class KeyManager {
             throw new RuntimeException("Secret key 파일 읽기 실패 : " + e.getMessage(), e);
         }
     }
+
+    // 공개키 파일 읽기
+    public PublicKey readPublicKey(String publicKeyFile) throws Exception {
+        try (FileInputStream fis = new FileInputStream(publicKeyFile);
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
+            return (PublicKey) ois.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            throw new RuntimeException("Public key 파일 읽기 실패 : " + e.getMessage(), e);
+        }
+    }
 }

@@ -5,21 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>전자 서명 프로젝트 - 검증</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <h2>계약서 검증</h2>
-<form action="/verify" method="post">
-  <label for="envelopeText">기존 계약서 파일 : </label><br>
-  <textarea id="envelopeText" rows="10" cols="50" required></textarea><br>
+<form id="verifyForm">
+  <label for="originFile">원본 파일 이름 : </label>
+  <input type="text" id="originFile" name="originFile" required><br/><br/>
 
-  <label for="keyName">키 파일 이름 :</label>
-  <input type="text" id="keyName" name="keyName" required><br>
+  <label for="publicKeyFile">공개키 파일 이름 :</label>
+  <input type="text" id="publicKeyFile" name="publicKeyFile" required><br/><br/>
 
+  <label for="signFile">서명 파일 이름 :</label>
+  <input type="text" id="signFile" name="signFile" required><br/><br/>
 
   <button type="submit">검증하기 !!!! </button>
 </form>
 
-<a href="index.html">메인으로 이동</a>
 <p id="verifyResult"></p>
+<a href="index.html">메인으로 이동</a>
+
+<script>
+  $(document).ready(function(){
+    $('#verifyForm').on('submit', function(event) {
+      event.preventDefault();
+      $.ajax({
+        type: 'POST',
+        url: '/verify',
+        data: $(this).serialize(),
+        success: function(response) {
+          $('#verifyResult').text(response);
+        },
+        error: function(error) {
+          $('#verifyResult').text('검증 과정에서 오류가 발생했습니다.');
+        }
+      });
+    });
+  });
+</script>
 </body>
 </html>

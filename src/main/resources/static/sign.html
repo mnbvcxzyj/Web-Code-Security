@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,19 +13,17 @@
   <label>이름:</label>
   <input type="text" id="name" name="name" required><br><br>
 
-  <label for="address">주소 :</label><br>
+  <label for="address">주소 :</label>
   <input type="text" id="address" name="address" required><br><br>
 
-  <label for="publicKeyFile">public key 파일 이름 :</label><br>
+  <label for="publicKeyFile">public key 파일 이름 :</label>
   <input type="text" id="publicKeyFile" name="publicKeyFile" required><br><br>
 
-  <label for="privateKeyFile">private key 파일 이름 :</label><br>
+  <label for="privateKeyFile">private key 파일 이름 :</label>
   <input type="text" id="privateKeyFile" name="privateKeyFile" required><br><br>
 
   <label>내용 :</label>
-  <label>
-    <textarea name="document" required></textarea>
-  </label><br>
+  <input type="text" id="document" name="document" required><br><br>
 
   <label>계약 시작 :</label>
   <input type="date" name="startDate" required><br><br>
@@ -33,7 +31,10 @@
   <label>계약 종료 :</label>
   <input type="date" name="endDate" required><br><br>
 
-  <label for="signFile">전자 서명을 저장할 파일 이름 (입력값_envelope.dat 으로 저장됩니다.) :</label><br>
+  <label for="originFile">원본 파일을 저장할 파일 이름 :</label>
+  <input type="text" id="originFile" name="originFile" required><br><br>
+
+  <label for="signFile">전자 서명을 저장할 파일 이름 (입력값_envelope.dat 으로 저장됩니다.) :</label>
   <input type="text" id="signFile" name="signFile" required><br><br>
 
   <button type="submit">계약서 전송</button>

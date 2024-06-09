@@ -1,0 +1,22 @@
+nav{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+ul, li{
+    width: 90%;
+    list-style-type: none;
+    text-align: center;
+}
+
+li{
+    padding: 20px;
+    border: 1px solid #45a049;
+    margin-bottom: 20px;
+}
+
+a{
+    text-decoration-line: none;
+    font-size: 20px;
+}
