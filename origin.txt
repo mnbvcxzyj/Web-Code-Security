@@ -1,1 +1,0 @@
-Contract(name=김동동, address=월곡역, publicKeyFile=hi_public.key, privateKeyFile=hi_private.key, document=돈을 많이 주셨으면 좋겠어요., startDate=2024-06-02, endDate=2024-06-28, signFile=signsign, originFile=origin.txt)
