@@ -1,22 +1,29 @@
 package com.wcsp.web_code_security_project.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
-public class Contract implements Serializable {
-    private String name;
-    private String publicKeyFile;
-    private String privateKeyFile;
-    private String document;
-    private LocalDate startDate;
-    private LocalDate endDate;
-    private String signFile;
-    private String originFile;
+@Getter
+public final class Contract implements Serializable {
+   private final String name;
+   private final String publicKeyFile;
+   private final String privateKeyFile;
+   private final String document;
+   private final LocalDate startDate;
+   private final LocalDate endDate;
+   private final String signFile;
+   private final String originFile;
+
+   public Contract(String name, String publicKeyFile, String privateKeyFile, String document, LocalDate startDate, LocalDate endDate, String signFile, String originFile) {
+      this.name = name;
+      this.publicKeyFile = publicKeyFile;
+      this.privateKeyFile = privateKeyFile;
+      this.document = document;
+      this.startDate = startDate;
+      this.endDate = endDate;
+      this.signFile = signFile;
+      this.originFile = originFile;
+   }
 }
