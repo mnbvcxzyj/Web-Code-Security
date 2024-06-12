@@ -10,14 +10,20 @@
 <body>
 <h2>계약서 검증</h2>
 <form id="verifyForm">
-  <label for="originFile">원본 파일 이름 : </label>
-  <input type="text" id="originFile" name="originFile" required><br/><br/>
-
-  <label for="publicKeyFile">공개키 파일 이름 :</label>
+  <label for="publicKeyFile">연습생의 공개키 이름 :</label>
   <input type="text" id="publicKeyFile" name="publicKeyFile" required><br/><br/>
+
+  <label for="privateKeyFile">PrivateKey 파일 이름 :</label>
+  <input type="text" id="privateKeyFile" name="privateKeyFile" required><br/><br/>
 
   <label for="signFile">서명 파일 이름 :</label>
   <input type="text" id="signFile" name="signFile" required><br/><br/>
+
+  <label for="envFile">봉투 파일 이름 :</label>
+  <input type="text" id="envFile" name="envFile" required><br/><br/>
+
+  <label for="contractFile">검 파일 이름 :</label>
+  <input type="text" id="contractFile" name="contractFile" required><br/><br/>
 
   <button type="submit">검증하기 !!!! </button>
 </form>

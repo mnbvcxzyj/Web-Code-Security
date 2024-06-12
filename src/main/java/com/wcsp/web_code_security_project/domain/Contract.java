@@ -12,7 +12,6 @@ import java.time.LocalDate;
 @Data
 public class Contract implements Serializable {
     private String name;
-    private String address;
     private String publicKeyFile;
     private String privateKeyFile;
     private String document;
@@ -20,5 +19,4 @@ public class Contract implements Serializable {
     private LocalDate endDate;
     private String signFile;
     private String originFile;
-
 }
